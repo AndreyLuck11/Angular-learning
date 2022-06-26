@@ -1,8 +1,56 @@
 <div class="container">
-  <h1>Angular Directives</h1>
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Angular Forms</h1>
 
+    <div class="form-control">
+      <label>Email</label>
+      <input type="text" placeholder="Email"  formControlName="email">
+      <div class="validation" *ngIf="form.get('email').invalid && form.get('email').touched">
+        <small>Введите корректный email</small>
+      </div>
+    </div>
 
-  <p appStyle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, laborum!</p>
+    <div class="form-control">
+      <label>Пароль</label>
+      <input type="password" placeholder="Пароль" formControlName="password">
+      <div class="validation" *ngIf="form.get('password').invalid && form.get('password').touched">
+        <small>Пароль должен иметь 8 или более символов</small>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Адрес</h2>
+
+      <div class="form-control">
+        <label>Страна</label>
+
+        <select>
+          <option value="ru">Россия</option>
+          <option value="ua">Украина</option>
+          <option value="by">Беларусь</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <input type="text">
+      </div>
+
+      <button class="btn" type="button">Выбрать столицу</button>
+    </div>
+
+    <div class="card">
+      <h2>Ваши навыки</h2>
+      <button class="btn" type="button">Добавить умение</button>
+      <div class="form-control">
+        <label></label>
+        <input type="text">
+      </div>
+    </div>
+
+    <button class="btn" type="submit" [disabled]="form.invalid">Отправить</button>
+
+  </form>
 </div>
+
 
 
