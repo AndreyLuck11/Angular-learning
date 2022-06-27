@@ -6,7 +6,8 @@
       <label>Email</label>
       <input type="text" placeholder="Email"  formControlName="email">
       <div class="validation" *ngIf="form.get('email').invalid && form.get('email').touched">
-        <small>Введите корректный email</small>
+        <small *ngIf="form.get('email').errors.required">Введите корректный email</small>
+        <small *ngIf="form.get('email').errors.uniqEmail">email занят</small>
       </div>
     </div>
 
@@ -47,7 +48,7 @@
       </div>
     </div>
 
-    <button class="btn" type="submit" [disabled]="form.invalid">Отправить</button>
+    <button class="btn" type="submit" [disabled]="form.invalid || form.pending">Отправить</button>
 
   </form>
 </div>

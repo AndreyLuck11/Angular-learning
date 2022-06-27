@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MyValidators} from './my.validators';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements  OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required], MyValidators.uniqEmail),
       password: new  FormControl('', [Validators.required, Validators.minLength(8)]),
       address: new FormGroup({
         country: new FormControl('ua'),
@@ -26,6 +27,7 @@ export class AppComponent implements  OnInit {
     console.log('Form', this.form);
     const formData = {...this.form.value};
     console.log('FormData', formData);
+    this.form.reset();
   }
 
   setCapital() {
@@ -46,7 +48,7 @@ export class AppComponent implements  OnInit {
 
   addSkill() {
     const control = new FormControl('', Validators.required);
-    (<FormArray>this.form.get('skills')).push(control);
+    (this.form.get('skills') as FormArray).push(control);
   }
 }
 
