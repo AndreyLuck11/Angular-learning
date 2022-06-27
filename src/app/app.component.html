@@ -17,7 +17,7 @@
       <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
       <span>
         <button class="btn btn-danger" (click)="removeTodo(todo.id)">Удалить</button>
-        <button class="btn" (click)="todo.completed = true" [disabled]="todo.completed">Завершить</button>
+        <button class="btn" (click)="complitedTodo(todo.id)" [disabled]="todo.completed">Завершить</button>
       </span>
     </p>
     </div>
