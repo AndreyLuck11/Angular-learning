@@ -1,8 +1,38 @@
 <div class="container">
-  <h1>Angular Directives</h1>
+  <h1>Angular HttpClient</h1>
 
+  <div class="card">
+    <div class="form-control">
+      <input type="text" placeholder="Название" [(ngModel)]="todoTitle">
+    </div>
+    <button class="btn" (click)="addTodo()">Добавить</button>
+    <button class="btn" (click)="fetchTodo()">Загрузить</button>
+  </div>
 
-  <p appStyle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, laborum!</p>
+  <hr>
+  <div *ngIf="!loading; else loadingBlock">
+    <div *ngIf="todos.length; else noTodo">
+  <div class="card" *ngFor="let todo of todos">
+    <p>
+      <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
+      <span>
+        <button class="btn btn-danger" (click)="removeTodo(todo.id)">Удалить</button>
+        <button class="btn" (click)="todo.completed = true" [disabled]="todo.completed">Завершить</button>
+      </span>
+    </p>
+    </div>
+  </div>
+  </div>
+
+  <ng-template #loadingBlock>
+    <p>Загрузка</p>
+  </ng-template>
+
+  <ng-template #noTodo>
+    <p>Задач нет</p>
+  </ng-template>
+
 </div>
+
 
 
