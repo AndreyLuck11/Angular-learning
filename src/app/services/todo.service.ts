@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 export interface Todo {
@@ -15,11 +15,21 @@ export class TodoService {
   constructor(private http: HttpClient) {}
 
   addTodo(todo: Todo): Observable<Todo> {
-    return  this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo);
+    return  this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', todo, {
+      headers: new HttpHeaders({
+        MyCustomHeader: Math.random().toString()
+      })
+    });
   }
 
   fetchTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=5');
+    let params = new HttpParams();
+    params = params.append('_limit', '4');
+    params = params.append('_custom', 'anything');
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos', {
+      // params: new HttpParams().set('_limit', '4')
+      params,
+    });
   }
 
   removeTodo(id: number): Observable<void> {

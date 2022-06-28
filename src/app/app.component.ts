@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Todo, TodoService} from './servises/todo.service';
+import {Todo, TodoService} from './services/todo.service';
 
 
 
@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   todos: Todo[] = [];
   todoTitle = '';
   loading = false;
+  error;
   constructor(private todosService: TodoService) {}
   ngOnInit() {
     this.fetchTodo();
@@ -35,6 +36,8 @@ export class AppComponent implements OnInit {
     this.todosService.fetchTodos().subscribe(todos => {
       this.todos = todos;
       this.loading = false;
+    }, error => {
+      this.error = error.message;
     });
   }
 
