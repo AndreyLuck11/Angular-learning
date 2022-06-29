@@ -1,8 +1,19 @@
+<nav class="navbar">
+  <h1>Angular Modules</h1>
+
+  <ul>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+    <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+  </ul>
+</nav>
+
 <div class="container">
-  <h1>Angular Directives</h1>
+  <div class="card">
 
+    <router-outlet></router-outlet>
 
-  <p appStyle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, laborum!</p>
+  </div>
 </div>
+
 
 
