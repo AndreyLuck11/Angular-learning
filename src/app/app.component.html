@@ -1,8 +1,18 @@
+<nav class="navbar">
+  <h1>Angular Dynamic components</h1>
+</nav>
+
 <div class="container">
-  <h1>Angular Directives</h1>
+  <div class="card">
 
+    <h1>Some content</h1>
 
-  <p appStyle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, laborum!</p>
+    <button class="btn" (click)="modal = true">Show modal</button>
+
+    <app-modal *ngIf="modal === true" (close)="modal = false"></app-modal>
+
+  </div>
 </div>
+
 
 
