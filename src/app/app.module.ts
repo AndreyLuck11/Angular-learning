@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core'
 import {AppComponent} from './app.component'
 import {FormsModule} from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
+import {RefDirective} from './ref.terctive';
 
 
 
@@ -11,13 +12,15 @@ import { ModalComponent } from './modal/modal.component';
   declarations: [
     AppComponent,
     ModalComponent,
+    RefDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule {
 }
