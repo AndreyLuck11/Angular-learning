@@ -1,8 +1,10 @@
-<div class="container">
-  <h1>Angular Directives</h1>
-
-
-  <p appStyle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, laborum!</p>
+<button (click)="animate()">Animate</button>
+<button (click)="boxState = 'special'">Set Special State</button>
+<button (click)="visible = !visible">Toggle Visibility</button>
+<hr>
+<div class="wrap">
+    <app-animate></app-animate>
+<!--    <div class="box" [@box]="boxState" *ngIf="visible">-->
+<!--        <h4>{{boxState | uppercase}}</h4>-->
+<!--    </div>-->
 </div>
-
-

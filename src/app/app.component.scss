@@ -1,4 +1,18 @@
-p  {
-  font-size: 1.5rem;
-  text-align: center;
+.wrap {
+  padding-top: 1rem;
+  width: 500px;
+  margin: 0 auto;
+}
+
+hr {
+  margin: 15px;
+}
+
+.box {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
